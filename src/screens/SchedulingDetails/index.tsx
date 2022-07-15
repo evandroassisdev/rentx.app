@@ -1,3 +1,4 @@
+import { Feather } from '@expo/vector-icons';
 import AccelerationSvg from '@src/assets/acceleration.svg';
 import ExchangeSvg from '@src/assets/exchange.svg';
 import ForceSvg from '@src/assets/force.svg';
@@ -8,7 +9,10 @@ import { Accessory } from '@src/components/Accessory';
 import { BackButton } from '@src/components/BackButton';
 import { Button } from '@src/components/Button';
 import { ImageSlider } from '@src/components/ImageSlider';
+import theme from '@src/styles/theme';
 import React from 'react';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
 
 import {
   CarImages,
@@ -22,12 +26,23 @@ import {
   Rent,
   Period,
   Price,
-  About,
   Accessories,
   Footer,
+  RentalPeriod,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue,
+  RentalPrice,
+  RentalPriceLabel,
+  RentalPriceDetails,
+  RentalPriceQuota,
+  RentalPriceTotal,
 } from './styles';
 
-export function CarDetails() {
+export function SchedulingDetails() {
+  const theme = useTheme();
+
   return (
     <Container>
       <Header>
@@ -64,11 +79,39 @@ export function CarDetails() {
           <Accessory name="2 pessoas" icon={PeopleSvg} />
         </Accessories>
 
-        <About>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sit
-          alias rerum corrupti cum et amet quod atque. Dolor molestiae doloribus
-          iure laboriosam quos neque debitis expedita, vel molestias fugiat?
-        </About>
+        <RentalPeriod>
+          <CalendarIcon>
+            <Feather
+              name="calendar"
+              size={RFValue(24)}
+              color={theme.colors.shape}
+            />
+          </CalendarIcon>
+
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+
+          <Feather
+            name="chevron-right"
+            size={RFValue(10)}
+            color={theme.colors.text}
+          />
+
+          <DateInfo>
+            <DateTitle>ATÉ</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+        </RentalPeriod>
+
+        <RentalPrice>
+          <RentalPriceLabel>Total</RentalPriceLabel>
+          <RentalPriceDetails>
+            <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+          </RentalPriceDetails>
+        </RentalPrice>
       </Content>
 
       <Footer>
