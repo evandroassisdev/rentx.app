@@ -1,6 +1,7 @@
 import ArrowSvg from '@src/assets/arrow.svg';
 import { BackButton } from '@src/components/BackButton';
 import { Button } from '@src/components/Button';
+import { Calendar } from '@src/components/Calendar';
 import React from 'react';
 import { useTheme } from 'styled-components';
 
@@ -43,7 +44,9 @@ export function Scheduling() {
         </RentalPeriod>
       </Header>
 
-      <Content />
+      <Content>
+        <Calendar />
+      </Content>
 
       <Footer>
         <Button title="Confirmar" />
