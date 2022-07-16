@@ -8,10 +8,7 @@ import {
   Inter_400Regular,
   Inter_500Medium,
 } from '@expo-google-fonts/inter';
-import { CarDetails } from '@src/screens/CarDetails';
-import { Home } from '@src/screens/Home';
-import { Scheduling } from '@src/screens/Scheduling';
-import { SchedulingDetails } from '@src/screens/SchedulingDetails';
+import { Routes } from '@src/routes';
 import theme from '@src/styles/theme';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -35,7 +32,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" />
-      <SchedulingDetails />
+      <Routes />
     </ThemeProvider>
   );
 }

@@ -1,13 +1,10 @@
-import AccelerationSvg from '@src/assets/acceleration.svg';
-import ExchangeSvg from '@src/assets/exchange.svg';
-import ForceSvg from '@src/assets/force.svg';
-import GasolineSvg from '@src/assets/gasoline.svg';
-import PeopleSvg from '@src/assets/people.svg';
-import SpeedSvg from '@src/assets/speed.svg';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Accessory } from '@src/components/Accessory';
 import { BackButton } from '@src/components/BackButton';
 import { Button } from '@src/components/Button';
 import { ImageSlider } from '@src/components/ImageSlider';
+import { CarDTO } from '@src/dtos/CarDTO';
+import { getAccessoryIcon } from '@src/utils/getAccessoryIcon';
 import React from 'react';
 
 import {
@@ -27,52 +24,61 @@ import {
   Footer,
 } from './styles';
 
+interface Params {
+  car: CarDTO;
+}
+
 export function CarDetails() {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { car } = route.params as Params;
+
+  function handleConfirmRental() {
+    navigation.navigate('Scheduling');
+  }
+
+  function handleBack() {
+    navigation.goBack();
+  }
+
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={handleBack} />
       </Header>
 
       <CarImages>
-        <ImageSlider
-          imagesUrl={[
-            'https://production.autoforce.com/uploads/version/profile_image/5505/comprar-prestige-plus-40-tfsi-s-tronic_7243435b0b.png',
-          ]}
-        />
+        <ImageSlider imagesUrl={car.photos} />
       </CarImages>
 
       <Content>
         <Details>
           <Description>
-            <Brand>Audi</Brand>
-            <Name>RS Coupe</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
 
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$ 120</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
 
         <Accessories>
-          <Accessory name="380Km/h" icon={SpeedSvg} />
-          <Accessory name="3.2s" icon={AccelerationSvg} />
-          <Accessory name="800 HP" icon={ForceSvg} />
-          <Accessory name="Gasolina" icon={GasolineSvg} />
-          <Accessory name="Auto" icon={ExchangeSvg} />
-          <Accessory name="2 pessoas" icon={PeopleSvg} />
+          {car.accessories.map((accessory) => (
+            <Accessory
+              key={accessory.type}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+            />
+          ))}
         </Accessories>
 
-        <About>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sit
-          alias rerum corrupti cum et amet quod atque. Dolor molestiae doloribus
-          iure laboriosam quos neque debitis expedita, vel molestias fugiat?
-        </About>
+        <About>{car.about}</About>
       </Content>
 
       <Footer>
-        <Button title="Confirmar" />
+        <Button title="Confirmar" onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );
