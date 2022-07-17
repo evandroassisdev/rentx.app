@@ -5,6 +5,7 @@ import { MyCars } from '@src/screens/MyCars';
 import { Scheduling } from '@src/screens/Scheduling';
 import { SchedulingComplete } from '@src/screens/SchedulingComplete';
 import { SchedulingDetails } from '@src/screens/SchedulingDetails';
+import { Splash } from '@src/screens/Splash';
 import React from 'react';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -12,9 +13,11 @@ const { Navigator, Screen } = createStackNavigator();
 export function StackRoutes() {
   return (
     <Navigator
+      initialRouteName="Splash"
       screenOptions={{
         headerShown: false,
       }}>
+      <Screen name="Splash" component={Splash} />
       <Screen name="Home" component={Home} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />
