@@ -13,6 +13,7 @@ import theme from '@src/styles/theme';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components';
 
 export default function App() {
@@ -31,8 +32,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="light" />
-      <Routes />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar style="light" />
+        <Routes />
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }
