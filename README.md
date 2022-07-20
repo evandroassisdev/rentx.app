@@ -12,7 +12,7 @@
 
 ![cover](.github/capa.png)
 
-<img src="https://im5.ezgif.com/tmp/ezgif-5-50ff2f797f.gif" height="100" alt="RentxGif" />
+<img src="https://im5.ezgif.com/tmp/ezgif-5-50ff2f797f.gif" height="300" alt="RentxGif" />
 
 
 ## 💻 Projeto app side
