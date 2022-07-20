@@ -19,7 +19,7 @@ O RentX é um app para fazer agendamentos de carros com uma interface otimista
 ## :hammer_and_wrench: Features
 
 - [x] Armazenamento em banco de dados local
-- [x] Offilne First 
+- [x] Offline First 
 
 ## ✨ Tecnologias
 
