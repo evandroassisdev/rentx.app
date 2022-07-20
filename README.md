@@ -7,11 +7,12 @@
 
  <img src="https://img.shields.io/static/v1?label=Ignite&message=ReactNative&color=dc1637&labelColor=0A1033" alt="Ignite" />
 
- <img src="https://im5.ezgif.com/tmp/ezgif-5-50ff2f797f.gif" alt="RentxGif" />
 </p>
 
 
 ![cover](.github/capa.png)
+
+<img src="https://im5.ezgif.com/tmp/ezgif-5-50ff2f797f.gif" height="100" alt="RentxGif" />
 
 
 ## 💻 Projeto app side
