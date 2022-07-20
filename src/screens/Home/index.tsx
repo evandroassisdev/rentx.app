@@ -2,11 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Logo from '@src/assets/logo.svg';
 import { Car } from '@src/components/Car';
-import { Load } from '@src/components/Load';
+import { LoadAnimation } from '@src/components/LoadAnimation';
 import { CarDTO } from '@src/dtos/CarDTO';
 import { api } from '@src/services/api';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { BackHandler, StyleSheet } from 'react-native';
 import { RectButton, PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -78,6 +78,12 @@ export function Home() {
     fetchCars();
   }, []);
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true;
+    });
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -88,7 +94,7 @@ export function Home() {
       </Header>
 
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}
