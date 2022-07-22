@@ -1,6 +1,5 @@
 import React from 'react';
 import { ActivityIndicator, TouchableOpacityProps } from 'react-native';
-import { RectButtonProps } from 'react-native-gesture-handler';
 import { useTheme } from 'styled-components';
 
 import { Container, Title } from './styles';

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Button } from '@src/components/Button';
 import { Input } from '@src/components/Input';
 import { PasswordInput } from '@src/components/PasswordInput';
@@ -7,8 +8,10 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from 'react-native';
 import { useTheme } from 'styled-components';
+import * as Yup from 'yup';
 
 import {
   Footer,
@@ -25,6 +28,30 @@ export function SignIn() {
   const [password, setPassword] = useState('');
 
   const theme = useTheme();
+  const navigation = useNavigation();
+
+  async function handleSignIn() {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('Digite um e-mail válido'),
+        password: Yup.string().required('Senha é obrigatório'),
+      });
+
+      await schema.validate({ email, password });
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        Alert.alert('Opa', error.message);
+      } else {
+        console.log('Erro na autenticação.');
+      }
+    }
+  }
+
+  function handleNewAccount() {
+    navigation.navigate('FirstStep');
+  }
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -59,13 +86,13 @@ export function SignIn() {
 
           <Footer>
             <ButtonLogin>
-              <Button title="Login" onPress={() => {}} disabled />
+              <Button title="Login" onPress={handleSignIn} />
             </ButtonLogin>
             <Button
               title="Criar conta gratuita"
               color={theme.colors.background_secondary}
               light
-              onPress={() => {}}
+              onPress={handleNewAccount}
             />
           </Footer>
         </Container>
