@@ -7,6 +7,7 @@ import { SchedulingComplete } from '@src/screens/SchedulingComplete';
 import { SchedulingDetails } from '@src/screens/SchedulingDetails';
 import { SignIn } from '@src/screens/SignIn';
 import { FirstStep } from '@src/screens/SignUp/FirstStep';
+import { SecondStep } from '@src/screens/SignUp/SecondStep';
 import { Splash } from '@src/screens/Splash';
 import React from 'react';
 
@@ -22,6 +23,7 @@ export function StackRoutes() {
       <Screen name="Splash" component={Splash} />
       <Screen name="SignIn" component={SignIn} />
       <Screen name="FirstStep" component={FirstStep} />
+      <Screen name="SecondStep" component={SecondStep} />
       <Screen
         name="Home"
         component={Home}
