@@ -53,6 +53,12 @@ export function SecondStep() {
     if (password !== passwordConfirm) {
       return Alert.alert('As senhas não são iguais');
     }
+
+    navigation.navigate('Confirmation', {
+      nextScreenRoute: 'SignIn',
+      title: 'Conta criada!',
+      message: `Agora é só fazer login\ne aproveitar.`,
+    });
   }
 
   return (
