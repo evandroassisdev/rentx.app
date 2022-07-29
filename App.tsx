@@ -8,6 +8,7 @@ import {
   Inter_400Regular,
   Inter_500Medium,
 } from '@expo-google-fonts/inter';
+import { AppProvider } from '@src/hooks';
 import { Routes } from '@src/routes';
 import theme from '@src/styles/theme';
 import * as SplashScreen from 'expo-splash-screen';
@@ -39,7 +40,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <StatusBar style="light" />
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </GestureHandlerRootView>
     </ThemeProvider>
   );

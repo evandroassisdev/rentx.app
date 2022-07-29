@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button } from '@src/components/Button';
 import { Input } from '@src/components/Input';
 import { PasswordInput } from '@src/components/PasswordInput';
+import { useAuth } from '@src/hooks/auth';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
@@ -29,6 +30,7 @@ export function SignIn() {
 
   const theme = useTheme();
   const navigation = useNavigation();
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -40,6 +42,8 @@ export function SignIn() {
       });
 
       await schema.validate({ email, password });
+
+      await signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);

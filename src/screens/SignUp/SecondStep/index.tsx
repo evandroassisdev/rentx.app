@@ -4,6 +4,7 @@ import { Bullet } from '@src/components/Bullet';
 import { Button } from '@src/components/Button';
 import { Input } from '@src/components/Input';
 import { PasswordInput } from '@src/components/PasswordInput';
+import { api } from '@src/services/api';
 import React, { useState } from 'react';
 import {
   Alert,
@@ -45,7 +46,7 @@ export function SecondStep() {
     navigation.goBack();
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !passwordConfirm) {
       return Alert.alert('Informe a senha e a confirmação dela');
     }
@@ -54,11 +55,23 @@ export function SecondStep() {
       return Alert.alert('As senhas não são iguais');
     }
 
-    navigation.navigate('Confirmation', {
-      nextScreenRoute: 'SignIn',
-      title: 'Conta criada!',
-      message: `Agora é só fazer login\ne aproveitar.`,
-    });
+    await api
+      .post('/users', {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password,
+      })
+      .then(() => {
+        navigation.navigate('Confirmation', {
+          nextScreenRoute: 'SignIn',
+          title: 'Conta criada!',
+          message: `Agora é só fazer login\ne aproveitar.`,
+        });
+      })
+      .catch(() => {
+        Alert.alert('Opa', 'Não foi possível caddadstrar');
+      });
   }
 
   return (
