@@ -6,7 +6,7 @@ import { LoadAnimation } from '@src/components/LoadAnimation';
 import { CarDTO } from '@src/dtos/CarDTO';
 import { api } from '@src/services/api';
 import React, { useEffect, useState } from 'react';
-import { BackHandler, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { RectButton, PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -78,12 +78,6 @@ export function Home() {
     fetchCars();
   }, []);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true;
-    });
-  }, []);
-
   return (
     <Container>
       <Header>
@@ -105,7 +99,7 @@ export function Home() {
         />
       )}
 
-      <PanGestureHandler onGestureEvent={onGestureEvent}>
+      {/* <PanGestureHandler onGestureEvent={onGestureEvent}>
         <Animated.View
           style={[
             myCarsButtonStyle,
@@ -125,7 +119,7 @@ export function Home() {
             />
           </ButtonAnimated>
         </Animated.View>
-      </PanGestureHandler>
+      </PanGestureHandler> */}
     </Container>
   );
 }

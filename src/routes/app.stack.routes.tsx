@@ -5,32 +5,18 @@ import { Home } from '@src/screens/Home';
 import { MyCars } from '@src/screens/MyCars';
 import { Scheduling } from '@src/screens/Scheduling';
 import { SchedulingDetails } from '@src/screens/SchedulingDetails';
-import { SignIn } from '@src/screens/SignIn';
-import { FirstStep } from '@src/screens/SignUp/FirstStep';
-import { SecondStep } from '@src/screens/SignUp/SecondStep';
-import { Splash } from '@src/screens/Splash';
 import React from 'react';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export function StackRoutes() {
+export function AppStackRoutes() {
   return (
     <Navigator
-      initialRouteName="SignIn"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}>
-      <Screen name="Splash" component={Splash} />
-      <Screen name="SignIn" component={SignIn} />
-      <Screen name="FirstStep" component={FirstStep} />
-      <Screen name="SecondStep" component={SecondStep} />
-      <Screen
-        name="Home"
-        component={Home}
-        options={{
-          gestureEnabled: false,
-        }}
-      />
+      <Screen name="Home" component={Home} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />
       <Screen name="SchedulingDetails" component={SchedulingDetails} />
