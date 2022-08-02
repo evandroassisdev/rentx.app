@@ -29,7 +29,7 @@ export function AppTabRoutes() {
         tabBarInactiveTintColor: theme.colors.text_detail,
       }}>
       <Screen
-        name="Home"
+        name="HomeTab"
         component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (

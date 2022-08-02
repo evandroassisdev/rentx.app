@@ -7,11 +7,10 @@ import { AuthRoutes } from './auth.routes';
 
 export function Routes() {
   const { user } = useAuth();
-  console.log('teste', user);
 
   return (
     <NavigationContainer>
-      {user ? <AppTabRoutes /> : <AuthRoutes />}
+      {user.id ? <AppTabRoutes /> : <AuthRoutes />}
     </NavigationContainer>
   );
 }
